@@ -5,6 +5,58 @@
 	<title>VueJsConverter</title>
 </head>
 <body>
+	<div id="app">
+		
+
+		<h1>{{count}}</h1>
+
+
+		<button @click="reduceCounter">-</button>
+
+		<button @click="addCounter">+</button>
+
+		<p v-if="count % 2 === 0">Current number is even</p>
+		<p v-else>Current number is odd</p>
+		
+	</div>
+
+
+	<footer id="footer">
 	
+		<p>Copyright {{ date.getFullYear() }}</p>
+	</footer>
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/vue@2.6.10/dist/vue.js"></script>	
+
+<script>
+	new Vue({
+		el: '#app',
+		data:{
+			count: 0,
+		},
+		methods: {
+			reduceCounter: function() {
+				if(this.count>0)
+				this.count--
+			},
+			addCounter: function() {
+				this.count++
+			}
+		}
+	})
+</script>
+
+
+<script>
+	new Vue({
+		el: '#footer',
+		data:{
+			date: new Date(),
+			count: 0
+		}
+	})
+</script>
 </body>
 </html>
