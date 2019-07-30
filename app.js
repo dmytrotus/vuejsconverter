@@ -2,7 +2,11 @@ new Vue({
 	el: '#app',
 
 	data: {
-		currencies: {}
+		currencies: {},
+
+		amount: 0,
+		from: 'EUR',
+		to: 'USD',
 	},
 	/*mounted(){
 		axios.get('https://free.currconv.com/api/v7/currencies?apiKey=sample-key-do-not-use')
@@ -45,6 +49,15 @@ new Vue({
 			localStorage.setItem('currencies', JSON.stringify(response.data.results))
 
 		});
+		},
+
+		convertCurrency(){
+			axios.get('https://free.currconv.com/api/v7/convert?q=${this.from}_${this.to}')
+			.then((response) => {
+
+				console.log(response)
+			})
+
 		}
 	}
 
