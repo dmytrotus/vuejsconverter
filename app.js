@@ -52,10 +52,15 @@ new Vue({
 		},
 
 		convertCurrency(){
-			axios.get('https://free.currconv.com/api/v7/convert?q=${this.from}_${this.to}')
+
+			key = this.from + '&symbols=' + this.to;
+
+			axios.get('https://api.ratesapi.io/api/2010-01-12?base='+ key)
 			.then((response) => {
 
 				console.log(response)
+
+				this.result = response.data.result[key].val;
 			})
 
 		}
